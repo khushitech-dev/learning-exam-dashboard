@@ -1,0 +1,11 @@
+# Secrets
+.env
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local Netlify folder
+.netlify

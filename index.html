@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="app">
+  <!-- ============ Sidebar ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">📚</div>
+      <div class="brand-text">
+        <span class="brand-name">Learning</span>
+        <span class="brand-sub">Dashboard</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebar-nav">
+      <button class="nav-item active" data-page="dashboard"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></button>
+      <button class="nav-item" data-page="programs"><span class="nav-icon">🗂️</span><span class="nav-label">My Programs</span></button>
+      <button class="nav-item" data-page="roadmap"><span class="nav-icon">🗺️</span><span class="nav-label">Roadmap</span></button>
+      <button class="nav-item" data-page="tests"><span class="nav-icon">📝</span><span class="nav-label">Tests</span></button>
+      <button class="nav-item" data-page="weak"><span class="nav-icon">⚠️</span><span class="nav-label">Weak Topics</span></button>
+      <a class="nav-item" data-page="exam-study" href="exam/"><span class="nav-icon">🎓</span><span class="nav-label">Exam Study</span></a>
+      <button class="nav-item" data-page="analytics"><span class="nav-icon">📈</span><span class="nav-label">Analytics</span></button>
+      <button class="nav-item" data-page="summaries"><span class="nav-icon">📖</span><span class="nav-label">Final Summaries</span></button>
+      <button class="nav-item" data-page="search"><span class="nav-icon">🔍</span><span class="nav-label">Search</span></button>
+      <button class="nav-item" data-page="settings"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="theme-toggle" id="theme-toggle">
+        <span class="nav-icon">🌙</span><span class="nav-label" id="theme-label">Dark Mode</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============ Main ============ -->
+  <div class="main">
+    <!-- Mobile header -->
+    <header class="mobile-header">
+      <button class="hamburger" id="hamburger">☰</button>
+      <span class="brand-name">Learning Dashboard</span>
+      <button class="theme-toggle-icon" id="theme-toggle-mobile">🌙</button>
+    </header>
+
+    <main class="content" id="content">
+      <!-- Dynamic content injected here -->
+    </main>
+  </div>
+</div>
+
+<!-- Theme JS -->
+<script>
+(function(){
+  const saved = localStorage.getItem('learningDashboard_theme');
+  const theme = saved || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/tests.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

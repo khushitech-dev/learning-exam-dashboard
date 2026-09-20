@@ -1,0 +1,25 @@
+{
+  "name": "exam-study-dashboard-server",
+  "version": "1.0.0",
+  "description": "Node.js + Supabase backend for the Exam Study Dashboard (port of the original PHP/MySQL app).",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "build:frontend": "node scripts/build-frontend.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "3.11.174",
+    "pg": "^8.12.0",
+    "serverless-http": "^3.2.0"
+  }
+}

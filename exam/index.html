@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.onrender.com blob:">
+<title>Exam Study Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+</head>
+<body>
+<div class="exam-app">
+  <aside class="exam-sidebar" id="exam-sidebar">
+    <div class="exam-sidebar-brand">
+      <div class="exam-brand-logo">🎓</div>
+      <div class="exam-brand-text">
+        <span class="exam-brand-name">Exam Study</span>
+        <span class="exam-brand-sub">PDF Dashboard</span>
+      </div>
+    </div>
+
+    <nav class="exam-sidebar-nav" id="exam-sidebar-nav">
+      <button class="exam-nav-item active" data-nav="dashboard"><span class="exam-nav-icon">📊</span><span class="exam-nav-label">Dashboard</span></button>
+      <button class="exam-nav-item" data-nav="subjects"><span class="exam-nav-icon">🗂️</span><span class="exam-nav-label">My Subjects</span></button>
+      <button class="exam-nav-item" data-nav="upload"><span class="exam-nav-icon">📄</span><span class="exam-nav-label">Upload PDF</span></button>
+      <button class="exam-nav-item" data-nav="weak"><span class="exam-nav-icon">⚠️</span><span class="exam-nav-label">Weak Topics</span></button>
+      <button class="exam-nav-item" data-nav="tests"><span class="exam-nav-icon">📝</span><span class="exam-nav-label">Tests</span></button>
+      <button class="exam-nav-item" data-nav="revision"><span class="exam-nav-icon">🔄</span><span class="exam-nav-label">Revision</span></button>
+      <button class="exam-nav-item" data-nav="summaries"><span class="exam-nav-icon">🏆</span><span class="exam-nav-label">Final Summaries</span></button>
+      <button class="exam-nav-item" data-nav="search"><span class="exam-nav-icon">🔍</span><span class="exam-nav-label">Search</span></button>
+      <button class="exam-nav-item" data-nav="settings"><span class="exam-nav-icon">⚙️</span><span class="exam-nav-label">Settings</span></button>
+    </nav>
+
+    <div class="exam-sidebar-footer">
+      <button class="exam-theme-toggle" id="exam-theme-toggle">
+        <span class="exam-nav-icon" id="exam-theme-icon">🌙</span><span class="exam-nav-label" id="exam-theme-label">Dark Mode</span>
+      </button>
+      <a class="exam-back-link" href="../index.html">← Back to Learning Dashboard</a>
+    </div>
+  </aside>
+
+  <div class="exam-main">
+    <header class="exam-mobile-header">
+      <button class="exam-hamburger" id="exam-hamburger">☰</button>
+      <span class="exam-brand-name">Exam Study</span>
+    </header>
+    <main class="exam-content" id="exam-content">
+      <div class="exam-loading" id="exam-boot">Loading…</div>
+    </main>
+  </div>
+</div>
+
+<div id="exam-modal-root"></div>
+<div id="exam-toast-root"></div>
+
+<script>
+(function(){try{var t=localStorage.getItem('examDashboard_theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<script>
+// Boot watchdog (inline on purpose - it can never be stale-cached).
+(function () {
+  var bootEl = document.getElementById('exam-boot');
+  if (!bootEl) return;
+
+  function content() { return document.getElementById('exam-content'); }
+  function bootGone() { var c = content(); return c && !c.querySelector('#exam-boot'); }
+  function rendered() {
+    var c = content();
+    return c && c.querySelector('.exam-h1,.exam-h2,.exam-table,.exam-subject-card,.exam-stat-tile,.exam-empty,.exam-summary-body,.exam-tabs,.exam-dropzone,.exam-form-group,.exam-card');
+  }
+
+  // Case 1: external scripts never ran (blocked / stale cache / JS error on load).
+  setTimeout(function () {
+    if (bootGone() || rendered()) return;
+    if (bootEl) bootEl.innerHTML = '<div style="text-align:center;padding:48px 16px">' +
+      '<div style="font-size:18px">⚠️ Dashboard scripts could not start</div>' +
+      '<div style="margin:10px 0;color:#666">The page did not initialise. This usually means your browser is running an old cached copy of the app scripts, or the dashboard has no /api endpoint configured.</div>' +
+      '<div><a href="javascript:location.reload()">↻ Reload page</a> &nbsp;·&nbsp; <a href="javascript:location.reload(true)">Hard reload</a></div>' +
+      '<div style="margin-top:10px;font-size:12px;color:#666">Hosting the frontend separately? Set the API origin on the page (window.EXAM_API_BASE) before the scripts load.</div>' +
+    '</div>';
+  }, 6000);
+
+  // Case 2: scripts ran but a data request never completes (stuck fetch).
+  setTimeout(function () {
+    if (bootGone() || rendered()) return;
+    var c = content();
+    if (c) c.innerHTML = '<div style="text-align:center;padding:60px 16px">' +
+      '<div style="font-size:20px">⏳ Dashboard stuck loading</div>' +
+      '<div style="margin:10px 0;color:#666">A data request is still pending after 15s. This is usually a temporary network block or an unreachable API origin.</div>' +
+      '<div><a href="javascript:location.reload()">↻ Reload page</a> &nbsp;·&nbsp; <a href="javascript:location.reload(true)">Hard reload</a></div>' +
+    '</div>';
+  }, 15000);
+})();
+</script>
+<link rel="stylesheet" href="assets/css/exam.css?v=20260912">
+<script src="assets/js/exam-ui.js?v=20260912"></script>
+<script src="lib/mermaid.min.js?v=20260912"></script>
+<script src="assets/js/exam-pdf.js?v=20260912"></script>
+<script src="assets/js/exam-search.js?v=20260912"></script>
+<script src="assets/js/exam-settings.js?v=20260912"></script>
+<script src="assets/js/exam-study.js?v=20260912"></script>
+<script src="assets/js/exam-tests.js?v=20260912"></script>
+<script src="assets/js/exam-app.js?v=20260912"></script>
+</body>
+</html>

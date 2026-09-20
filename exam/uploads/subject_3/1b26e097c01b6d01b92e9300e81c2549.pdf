@@ -1,0 +1,52 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 3 0 R /Resources << /Font << /F1 6 0 R >> >> >>
+endobj
+3 0 obj
+<< /Length 618 >>
+stream
+BT /F1 16 Tf 50 740 Td (Chapter 1: Introduction to Databases) Tj ET
+BT 50 700 Td /F1 12 Tf (A database is an organized collection of data. It can be easily) Tj ET
+BT 50 676 Td /F1 12 Tf (stored, managed and accessed. A database management system or DBMS is) Tj ET
+BT 50 652 Td /F1 12 Tf (the software used to create and manage databases. Examples include) Tj ET
+BT 50 628 Td /F1 12 Tf (MySQL, Oracle and SQL Server. Tables store data in rows and columns. A) Tj ET
+BT 50 604 Td /F1 12 Tf (primary key uniquely identifies each record. Entities and attributes) Tj ET
+BT 50 580 Td /F1 12 Tf (describe the ER model.) Tj ET
+
+endstream
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 6 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 553 >>
+stream
+BT /F1 16 Tf 50 740 Td (Chapter 2: Normalization) Tj ET
+BT 50 700 Td /F1 12 Tf (Normalization reduces data redundancy. It organizes data into related) Tj ET
+BT 50 676 Td /F1 12 Tf (tables to avoid duplication. First normal form removes repeated) Tj ET
+BT 50 652 Td /F1 12 Tf (groups. Second normal form removes partial dependencies on the primary) Tj ET
+BT 50 628 Td /F1 12 Tf (key. Third normal form removes transitive dependencies. Foreign keys) Tj ET
+BT 50 604 Td /F1 12 Tf (link tables together. The ER model uses entities and relationships.) Tj ET
+
+endstream
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000184 00000 n 
+0000000853 00000 n 
+0000000979 00000 n 
+0000001583 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1653
+%%EOF

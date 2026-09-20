@@ -1,0 +1,35 @@
+# Netlify config — Learning Dashboard (Express API + static frontend)
+
+[build]
+  publish = "dist"
+  command = "npm install --omit=dev && node scripts/build-frontend.js"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "nft"
+
+# Route all API calls to the Node function (frontend already calls api/<name>.php).
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# Exam app sits under /exam/ and uses relative api/... calls -> /exam/api/...
+[[redirects]]
+  from = "/exam/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# Exam app SPA fallback.
+[[redirects]]
+  from = "/exam/*"
+  to = "/exam/index.html"
+  status = 200
+
+# SPA fallback: unknown paths render the app.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
